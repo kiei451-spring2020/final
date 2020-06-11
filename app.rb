@@ -80,6 +80,12 @@ get "/logins/new" do
     view "new_login"
 end
 
+# Logout
+get "/logout" do
+    session[:user_id] = nil
+    view "logout"
+end
+
 # Receiving end of login form
 post "/logins/create" do
     puts params
@@ -99,10 +105,4 @@ post "/logins/create" do
     else 
         view "create_login_failed"
     end
-end
-
-# Logout
-get "/logout" do
-    session[:user_id] = nil
-    view "logout"
 end
