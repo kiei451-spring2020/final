@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-8">
+        <h2>
+        </h2>
+        <h1><%= @store[:title] %></h1>
+        <p><%= @store[:description] %></p>
+        <% for post in @posts %>
+            <% user = @users_table.where(:id => post[:user_id]).to_a[0] %>
+            <div class="media">
+                <% if post[:like] %>
+                    <i class="far fa-thumbs-up"></i></i>
+                <% else %>
+                    <i class="far fa-thumbs-down"></i></i>
+                <% end %>
+                <div class="media-body">
+                    <h5 class="mt-0"><%= user[:name] %></h5>
+                    <%= post[:comments] %>
+                </div>
+            </div>
+        <% end %>
+        <p class="mt-5">
+            <a href="/stores/<%= @store[:id] %>/posts/new" class="btn btn-primary">Tell us what you thought</a>
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <h3>Phone Number</h3>
+        <p><%= @store[:phone] %></p>
+        <h3>Location</h3>
+        <p><%= @store[:location] %></p>
+        <iframe
+            width="600"
+            height="450"
+            zoom="17" 
+            frameborder="0"
+            style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpW_Kq1_G34Hf5vQsuoQSeNoty_PfZpVk=<%= @lat_long %>&zoom=17" allowfullscreen>
+        </iframe>
+    </div>
+</div>
