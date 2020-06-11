@@ -36,7 +36,7 @@ end
 get "/stores/:id" do
     @users_table = users_table
     # SELECT * FROM stores WHERE id=:id
-    @restaurant = stores_table.where(:id => params["id"]).to_a[0]
+    @store = stores_table.where(:id => params["id"]).to_a[0]
     # SELECT * FROM posts WHERE store_id=:id
     @posts = posts_table.where(:store_id => params["id"]).to_a
     # Google Maps
