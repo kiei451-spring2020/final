@@ -14,7 +14,7 @@ DB.create_table! :stores do
 end
 DB.create_table! :posts do
   primary_key :id
-  foreign_key :restaurant_id
+  foreign_key :store_id
   foreign_key :user_id
   Boolean :like
   String :comments, text: true
@@ -27,14 +27,14 @@ DB.create_table! :users do
 end
 
 # Insert initial (seed) data
-store_table = DB.from(:stores)
+stores_table = DB.from(:stores)
 
-store_table.insert(title: "MedMen", 
+stores_table.insert(title: "MedMen", 
                     description: "One of the best dispensaries in Evanston, with a large selection",
                     phone: "(224) 278-9988",
                     location: "1804 Maple Ave, Evanston, IL 60201")
 
-store_table.insert(title: "Consume", 
+stores_table.insert(title: "Consume", 
                     description: "Modern vibes with friendly staff",
                     phone: "(872) 304-3113",
                     location: "6428 N Milwaukee Ave, Chicago, IL 60631")
